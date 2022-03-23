@@ -10,7 +10,7 @@ import { movies } from "./movies";
 const MovieList = () => {
   const [localMovies, removeMovie, manageLike] = useMovies(() => {}, movies);
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [pagination, setPage, setPageSize] = usePagination();
+  const [pagination, setPage, setPageSize] = usePagination(filteredMovies);
   return (
     <div className="container">
       <div className="row">
@@ -22,8 +22,8 @@ const MovieList = () => {
                   pagination.page * pagination.page_size,
                   (pagination.page + 1) * pagination.page_size
                 )
-                .map((m, k) => (
-                  <div className="col-12 col-md-4 col-lg-3" key={k}>
+                .map((m) => (
+                  <div className="col-12 col-md-4 col-lg-3" key={m.id}>
                     <Movie info={m} remove={removeMovie} update={manageLike} />
                   </div>
                 ))}
