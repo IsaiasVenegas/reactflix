@@ -8,15 +8,24 @@ const useLikes = (movie, update) => {
   const [dislike, toggleDislike] = useState(false);
 
   // Manage like and dislike buttons
+  // Toggle dislike button if like is true and viceversa
   const manageButtons = (likeButton) => {
     if (likeButton) {
       let newState = !like;
       toggleLike(newState);
       update(movie, true, newState);
+      if (newState && dislike) {
+        toggleDislike(false);
+        update(movie, false, false);
+      }
     } else {
       let newState = !dislike;
       toggleDislike(newState);
       update(movie, false, newState);
+      if (newState && like) {
+        toggleLike(false);
+        update(movie, true, false);
+      }
     }
   };
 
