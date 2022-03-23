@@ -1,4 +1,4 @@
-const movies = [
+export const movies = [
   {
     id: "1",
     title: "Oceans 8",
@@ -71,6 +71,6 @@ const movies = [
   },
 ];
 
-export const movies$ = new Promise((resolve, reject) =>
+const movies$ = new Promise((resolve, reject) =>
   setTimeout(resolve, 100, movies)
 );

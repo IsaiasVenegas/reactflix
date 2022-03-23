@@ -33,6 +33,7 @@ const Movie = ({ info, remove }) => {
             <div className="row">
               <div className="col">
                 <Button
+                  className="action"
                   aria-label="like"
                   title="Like this film"
                   active={like}
@@ -41,6 +42,7 @@ const Movie = ({ info, remove }) => {
                   <FontAwesomeIcon icon={faThumbsUp} />
                 </Button>
                 <Button
+                  className="action"
                   aria-label="dislike"
                   title="Dislike this film"
                   active={dislike}
@@ -49,6 +51,7 @@ const Movie = ({ info, remove }) => {
                   <FontAwesomeIcon icon={faThumbsDown} />
                 </Button>
                 <Button
+                  className="action"
                   aria-label="remove"
                   title="Remove this film"
                   onClick={() => remove((item) => item.id !== info.id)}

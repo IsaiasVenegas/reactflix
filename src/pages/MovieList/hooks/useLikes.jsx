@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 /**
  * Manage like and dislike buttons
  */
-const useLikes = (movie) => {
+const useLikes = () => {
   const [like, toggleLike] = useState(false);
   const [dislike, toggleDislike] = useState(false);
 
@@ -12,11 +12,11 @@ const useLikes = (movie) => {
     if (likeButton) {
       let newState = !like;
       toggleLike(newState);
-      newState ? (movie.likes += 1) : (movie.likes -= 1); // setAction
+      // setAction
     } else {
       let newState = !dislike;
       toggleDislike(newState);
-      newState ? (movie.dislikes += 1) : (movie.dislikes -= 1); // setAction
+      // setAction
     }
   };
 

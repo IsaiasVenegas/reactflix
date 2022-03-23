@@ -19,7 +19,7 @@
 .movie-info .title {
   font-weight: bold;
 }
-.btn {
+.btn.action {
   border-radius: 50%;
   color: #fff;
   border-color: #8d8d8d;
@@ -27,7 +27,7 @@
   margin-right: 6px;
   box-shadow: none !important;
 }
-.btn:hover {
+.btn.action:hover {
   color: #000 !important;
   border-color: #fff;
   background-color: #fff;

@@ -2,23 +2,37 @@ import React, { useState } from "react";
 import useMovies from "./hooks/useMovies";
 import LateralBar from "./LateralBar";
 import Movie from "./Movie";
+import Pagination from "./Pagination";
+import { usePagination } from "./hooks";
 import "./styles.css";
-import { movies } from "./data/movies";
+import { movies } from "./movies";
 
 const MovieList = () => {
-  const [localMovies, removeMovie] = useMovies(movies);
+  const [localMovies, removeMovie] = useMovies(() => {}, movies);
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [pagination, setPage, setPageSize] = usePagination();
   return (
     <div className="container">
       <div className="row">
         <div className="col">
           <div className="container">
             <div className="row">
-              {filteredMovies.map((m, k) => (
-                <div className="col-12 col-md-4 col-lg-3" key={k}>
-                  <Movie info={m} remove={removeMovie} />
-                </div>
-              ))}
+              {filteredMovies
+                .slice(
+                  pagination.page * pagination.page_size,
+                  (pagination.page + 1) * pagination.page_size
+                )
+                .map((m, k) => (
+                  <div className="col-12 col-md-4 col-lg-3" key={k}>
+                    <Movie info={m} remove={removeMovie} />
+                  </div>
+                ))}
+              <Pagination
+                count={filteredMovies.length}
+                pageSize={pagination.page_size}
+                page={pagination.page}
+                setStatePage={setPage}
+              />
             </div>
           </div>
         </div>
@@ -27,6 +41,7 @@ const MovieList = () => {
             <LateralBar
               movies={localMovies.list}
               updateList={setFilteredMovies}
+              changeSize={setPageSize}
             />
           </div>
         </div>
