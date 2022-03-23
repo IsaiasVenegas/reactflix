@@ -1,7 +1,9 @@
 import React, { useMemo } from "react";
+import { Spinner } from "reactstrap";
 import useMovies from "./hooks/useMovies";
 import LateralBar from "./LateralBar";
 import Movie from "./Movie";
+import "./styles.css";
 const defaultList = [
   {
     id: "1",
@@ -82,28 +84,28 @@ const MovieList = (props) => {
   );
   return (
     <div className="container">
-      <div className="row">
-        <div className="col">
-          <div className="container">
-            <div className="row">
-              {movies.loading ? (
-                <p>Loading...</p>
-              ) : (
-                movies.list.map((m, k) => (
+      {movies.loading ? (
+        <Spinner />
+      ) : (
+        <div className="row">
+          <div className="col">
+            <div className="container">
+              <div className="row">
+                {movies.list.map((m, k) => (
                   <div className="col" key={k}>
                     <Movie info={m} remove={removeMovies} />
                   </div>
-                ))
-              )}
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="col-3">
+            <div className="row">
+              <LateralBar categories={categories} filter={removeMovies} />
             </div>
           </div>
         </div>
-        <div className="col">
-          <div className="row">
-            <LateralBar categories={categories} filter={removeMovies} />
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

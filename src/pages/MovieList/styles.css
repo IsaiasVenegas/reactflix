@@ -1,3 +1,47 @@
+.movie {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0;
+  margin-top: 20px;
+  width: 200px;
+  word-break: break-all;
+}
+.movie .img {
+  text-align: center;
+}
+.movie-info {
+  display: none;
+  padding: 10px;
+  background-color: #181818;
+}
+.movie:hover .movie-info {
+  display: block;
+}
 .movie-info .title {
   font-weight: bold;
+}
+.btn {
+  border-radius: 50%;
+  color: #fff;
+  border-color: #8d8d8d;
+  background-color: #181818;
+  margin-right: 6px;
+}
+.btn:hover {
+  color: #000 !important;
+  border-color: #fff;
+  background-color: #fff;
+}
+.btn:focus {
+  box-shadow: none;
+}
+.ratio-box {
+  width: 40%;
+  height: 20px;
+  border-radius: 4px;
+}
+.category {
+  margin-left: 2px;
+  margin-right: 2px;
+  cursor: pointer;
 }
