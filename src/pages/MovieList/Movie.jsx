@@ -7,9 +7,9 @@ const getRatio = (l, d) => {
   return `${percentage.toFixed(0)}%`;
 };
 
-const Movie = ({ id, title, category, likes, dislikes }) => {
+const Movie = ({ info, remove }) => {
   return (
-    <div className="container movie" id={id}>
+    <div className="container movie">
       <div className="row">
         <div className="col">
           <p>image</p>
@@ -20,17 +20,27 @@ const Movie = ({ id, title, category, likes, dislikes }) => {
           <div className="container movie-info">
             <div className="row">
               <div className="col">
-                <p>{getRatio(likes, dislikes)}</p>
+                <button
+                  type="button"
+                  onClick={() => remove((item) => item.id !== info.id)}
+                >
+                  Remove
+                </button>
               </div>
             </div>
             <div className="row">
               <div className="col">
-                <p>{category}</p>
+                <p>{getRatio(info.likes, info.dislikes)}</p>
               </div>
             </div>
             <div className="row">
               <div className="col">
-                <p className="title">{title}</p>
+                <p>{info.category}</p>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <p className="title">{info.title}</p>
               </div>
             </div>
           </div>
