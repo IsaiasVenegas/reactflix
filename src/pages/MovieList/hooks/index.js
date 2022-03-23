@@ -1,3 +1,4 @@
 import useMovies from "./useMovies";
+import useFilters from "./useFilters";
 
-export { useMovies };
+export { useMovies, useFilters };

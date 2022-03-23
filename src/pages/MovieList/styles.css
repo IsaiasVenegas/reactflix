@@ -44,3 +44,9 @@
   margin-right: 2px;
   cursor: pointer;
 }
+.category.active {
+  background-color: #dc3545 !important;
+}
+.category.inactive {
+  background-color: #6c757d !important;
+}

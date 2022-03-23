@@ -1,7 +1,9 @@
 import React from "react";
+import useFilters from "./hooks/useFilters";
 import { Badge } from "reactstrap";
 
-const LateralBar = ({ categories, filter }) => {
+const LateralBar = ({ movies, updateList }) => {
+  const [categories, filters, addFilter] = useFilters(movies, updateList);
   return (
     <div className="container">
       <div className="row">
@@ -9,10 +11,11 @@ const LateralBar = ({ categories, filter }) => {
         <div className="col">
           {categories.map((c, k) => (
             <Badge
-              className="category"
+              className={`category ${
+                filters.indexOf(c) === -1 ? "inactive" : "active"
+              }`}
               key={k}
-              onClick={() => filter((item) => item.category === c)}
-              color="danger"
+              onClick={() => addFilter(c)}
               pill
             >
               {c}
