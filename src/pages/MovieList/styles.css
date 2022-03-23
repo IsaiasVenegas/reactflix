@@ -48,7 +48,9 @@
   margin-right: 2px;
   cursor: pointer;
 }
-.category.active {
+.category.active,
+.page-item.active .page-link,
+.dropdown-menu.show .dropdown-item:active {
   background-color: #dc3545 !important;
 }
 .category.inactive {
@@ -58,4 +60,8 @@
   color: #fff !important;
   border-color: #8d8d8d !important;
   background-color: #181818 !important;
+  box-shadow: none !important;
+}
+.page-item.disabled .page-link {
+  background-color: #4b4b4b !important;
 }

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 const usePagination = (list) => {
   const [pagination, setPagination] = useState({
     page: 0,
-    page_size: 12,
+    page_size: 8,
   });
 
   const setPage = (p) => {

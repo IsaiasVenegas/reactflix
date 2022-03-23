@@ -35,8 +35,11 @@ const LateralBar = ({ movies, updateList, changeSize }) => {
           <ButtonDropdown
             isOpen={dropdown}
             toggle={() => toggleDropdown(!dropdown)}
+            size="sm"
           >
-            <DropdownToggle caret>Show</DropdownToggle>
+            <DropdownToggle color="danger" caret>
+              Show
+            </DropdownToggle>
             <DropdownMenu>
               <DropdownItem onClick={() => changeSize(4)}>4</DropdownItem>
               <DropdownItem onClick={() => changeSize(8)}>8</DropdownItem>
