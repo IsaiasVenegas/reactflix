@@ -11,11 +11,11 @@ const useMovies = (getMovies, storedMovies) => {
     list: [],
   });
 
-  // ComponentDidMount call
-  // useEffect(() => {
-  //   setMovies({ loading: true, ...movies });
-  //   getMovies();
-  // }, []);
+  //ComponentDidMount call
+  useEffect(() => {
+    setMovies({ loading: true, list: [] });
+    getMovies();
+  }, []);
 
   //If the movie listing has been updated, put it in the local state
   useEffect(() => {
