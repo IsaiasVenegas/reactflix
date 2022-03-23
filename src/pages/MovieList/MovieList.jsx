@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useMemo } from "react";
 import useMovies from "./hooks/useMovies";
+import LateralBar from "./LateralBar";
 import Movie from "./Movie";
 const defaultList = [
   {
@@ -74,19 +75,34 @@ const defaultList = [
   },
 ];
 const MovieList = (props) => {
-  const [movies, removeMovie] = useMovies(defaultList);
+  const [movies, removeMovies] = useMovies(defaultList);
+  const categories = useMemo(
+    () => [...new Set(movies.list.map((m, k) => m.category))],
+    [movies.list]
+  );
   return (
     <div className="container">
       <div className="row">
-        {movies.loading ? (
-          <p>Loading...</p>
-        ) : (
-          movies.list.map((m, k) => (
-            <div className="col" key={k}>
-              <Movie info={m} remove={removeMovie} />
+        <div className="col">
+          <div className="container">
+            <div className="row">
+              {movies.loading ? (
+                <p>Loading...</p>
+              ) : (
+                movies.list.map((m, k) => (
+                  <div className="col" key={k}>
+                    <Movie info={m} remove={removeMovies} />
+                  </div>
+                ))
+              )}
             </div>
-          ))
-        )}
+          </div>
+        </div>
+        <div className="col">
+          <div className="row">
+            <LateralBar categories={categories} filter={removeMovies} />
+          </div>
+        </div>
       </div>
     </div>
   );
