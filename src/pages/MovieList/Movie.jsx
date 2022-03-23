@@ -1,11 +1,12 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
+import { Badge, Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faThumbsDown,
   faThumbsUp,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import { Badge } from "reactstrap";
+import { useLikes } from "./hooks";
 
 const getRatio = (l, d) => {
   let total = l + d;
@@ -14,7 +15,11 @@ const getRatio = (l, d) => {
 };
 
 const Movie = ({ info, remove }) => {
-  const likeRatio = useMemo(() => getRatio(info.likes, info.dislikes), [info]);
+  const [like, dislike, updateCount] = useLikes(info);
+  const likeRatio = useMemo(
+    () => getRatio(info.likes, info.dislikes),
+    [info, like, dislike] // TODO: Remove using redux
+  );
   return (
     <div className="container movie">
       <div className="row">
@@ -27,28 +32,29 @@ const Movie = ({ info, remove }) => {
           <div className="container movie-info">
             <div className="row">
               <div className="col">
-                <button
-                  className="btn"
+                <Button
                   aria-label="like"
                   title="Like this film"
+                  active={like}
+                  onClick={() => updateCount(true)}
                 >
                   <FontAwesomeIcon icon={faThumbsUp} />
-                </button>
-                <button
-                  className="btn"
+                </Button>
+                <Button
                   aria-label="dislike"
                   title="Dislike this film"
+                  active={dislike}
+                  onClick={() => updateCount(false)}
                 >
                   <FontAwesomeIcon icon={faThumbsDown} />
-                </button>
-                <button
-                  className="btn"
+                </Button>
+                <Button
                   aria-label="remove"
                   title="Remove this film"
                   onClick={() => remove((item) => item.id !== info.id)}
                 >
                   <FontAwesomeIcon icon={faTrash} />
-                </button>
+                </Button>
               </div>
             </div>
             <div className="row">

@@ -26,8 +26,7 @@ const useMovies = (storedMovies) => {
 
   // Remove a movie clicking on its trash button
   const removeMovie = (filterFunc) => {
-    let actualList = movies.list;
-    let updatedList = actualList.filter(filterFunc);
+    let updatedList = movies.list.filter(filterFunc);
     setMovies({ list: updatedList, loading: false });
   };
 

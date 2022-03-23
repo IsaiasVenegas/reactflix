@@ -25,14 +25,12 @@
   border-color: #8d8d8d;
   background-color: #181818;
   margin-right: 6px;
+  box-shadow: none !important;
 }
 .btn:hover {
   color: #000 !important;
   border-color: #fff;
   background-color: #fff;
-}
-.btn:focus {
-  box-shadow: none;
 }
 .ratio-box {
   width: 40%;
