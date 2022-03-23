@@ -27,6 +27,8 @@ const MovieList = () => {
                     <Movie info={m} remove={removeMovie} update={manageLike} />
                   </div>
                 ))}
+            </div>
+            <div className="row">
               <Pagination
                 count={filteredMovies.length}
                 pageSize={pagination.page_size}
