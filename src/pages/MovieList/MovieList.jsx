@@ -92,7 +92,7 @@ const MovieList = (props) => {
             <div className="container">
               <div className="row">
                 {movies.list.map((m, k) => (
-                  <div className="col" key={k}>
+                  <div className="col-12 col-md-4 col-lg-3" key={k}>
                     <Movie info={m} remove={removeMovies} />
                   </div>
                 ))}
