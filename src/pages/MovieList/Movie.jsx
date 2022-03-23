@@ -11,14 +11,14 @@ import { useLikes } from "./hooks";
 const getRatio = (l, d) => {
   let total = l + d;
   let percentage = total > 0 ? (l * 100) / total : (l * 100) / 1;
-  return percentage.toFixed(0);
+  return Math.trunc(percentage);
 };
 
-const Movie = ({ info, remove }) => {
-  const [like, dislike, updateCount] = useLikes(info);
+const Movie = ({ info, remove, update }) => {
+  const [like, dislike, manageButton] = useLikes(info, update);
   const likeRatio = useMemo(
     () => getRatio(info.likes, info.dislikes),
-    [info, like, dislike] // TODO: Remove using redux
+    [info, like, dislike]
   );
   return (
     <div className="container movie">
@@ -37,7 +37,7 @@ const Movie = ({ info, remove }) => {
                   aria-label="like"
                   title="Like this film"
                   active={like}
-                  onClick={() => updateCount(true)}
+                  onClick={() => manageButton(true)}
                 >
                   <FontAwesomeIcon icon={faThumbsUp} />
                 </Button>
@@ -46,7 +46,7 @@ const Movie = ({ info, remove }) => {
                   aria-label="dislike"
                   title="Dislike this film"
                   active={dislike}
-                  onClick={() => updateCount(false)}
+                  onClick={() => manageButton(false)}
                 >
                   <FontAwesomeIcon icon={faThumbsDown} />
                 </Button>

@@ -30,21 +30,21 @@ const useMovies = (getMovies, storedMovies) => {
     setMovies({ list: updatedList, loading: false });
   };
 
-  // // Increase/decrease a like/dislike count of a movie clicking on its button
-  // const manageLike = (movie, like, up) => {
-  //   let copyList = [...movies.list];
-  //   let indexMovie = copyList.indexOf(movie);
-  //   like
-  //     ? up
-  //       ? (copyList[indexMovie].likes += 1)
-  //       : (copyList[indexMovie].likes -= 1)
-  //     : up
-  //     ? (copyList[indexMovie].dislikes += 1)
-  //     : (copyList[indexMovie].dislikes -= 1);
-  //   setMovies({ list: copyList, loading: false });
-  // };
+  // Increase/decrease a like/dislike count of a movie clicking on its button
+  const manageLike = (movie, like, up) => {
+    let copyList = [...movies.list];
+    let indexMovie = copyList.indexOf(movie);
+    like
+      ? up
+        ? (copyList[indexMovie].likes += 1)
+        : (copyList[indexMovie].likes -= 1)
+      : up
+      ? (copyList[indexMovie].dislikes += 1)
+      : (copyList[indexMovie].dislikes -= 1);
+    setMovies({ list: copyList, loading: false });
+  };
 
-  return [movies, removeMovie];
+  return [movies, removeMovie, manageLike];
 };
 
 export default useMovies;

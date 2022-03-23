@@ -27,7 +27,8 @@
   margin-right: 6px;
   box-shadow: none !important;
 }
-.btn.action:hover {
+.btn.action:hover,
+.btn.action.active {
   color: #000 !important;
   border-color: #fff;
   background-color: #fff;

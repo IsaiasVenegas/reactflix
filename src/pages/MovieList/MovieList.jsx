@@ -8,7 +8,7 @@ import "./styles.css";
 import { movies } from "./movies";
 
 const MovieList = () => {
-  const [localMovies, removeMovie] = useMovies(() => {}, movies);
+  const [localMovies, removeMovie, manageLike] = useMovies(() => {}, movies);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [pagination, setPage, setPageSize] = usePagination();
   return (
@@ -24,7 +24,7 @@ const MovieList = () => {
                 )
                 .map((m, k) => (
                   <div className="col-12 col-md-4 col-lg-3" key={k}>
-                    <Movie info={m} remove={removeMovie} />
+                    <Movie info={m} remove={removeMovie} update={manageLike} />
                   </div>
                 ))}
               <Pagination

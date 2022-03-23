@@ -3,24 +3,24 @@ import { useState, useEffect } from "react";
 /**
  * Manage like and dislike buttons
  */
-const useLikes = () => {
+const useLikes = (movie, update) => {
   const [like, toggleLike] = useState(false);
   const [dislike, toggleDislike] = useState(false);
 
-  // Increase/decrease a like/dislike count of a movie clicking on its button
-  const manageLike = (likeButton) => {
+  // Manage like and dislike buttons
+  const manageButtons = (likeButton) => {
     if (likeButton) {
       let newState = !like;
       toggleLike(newState);
-      // setAction
+      update(movie, true, newState);
     } else {
       let newState = !dislike;
       toggleDislike(newState);
-      // setAction
+      update(movie, false, newState);
     }
   };
 
-  return [like, dislike, manageLike];
+  return [like, dislike, manageButtons];
 };
 
 export default useLikes;
