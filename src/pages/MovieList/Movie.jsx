@@ -56,9 +56,8 @@ const Movie = ({ info, remove }) => {
                 <div
                   className="ratio-box"
                   style={{
-                    background: `-webkit-linear-gradient(left, #00ff00 ${likeRatio}%, #ff0000 ${
-                      100 - likeRatio
-                    }%)`,
+                    background: `linear-gradient(to right, #44cb65 0%, #44cb65 ${likeRatio}%, 
+                      #dc3545 ${likeRatio}%, #dc3545 100%)`,
                   }}
                 ></div>
                 <p>{likeRatio}%</p>
