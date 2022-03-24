@@ -17,6 +17,7 @@ const useMovies = (getMovies, storedMovies) => {
   useEffect(() => {
     setMovies({ loading: true, list: [] });
     dispatch(getMovies());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //If the movie listing has been updated, put it in the local state

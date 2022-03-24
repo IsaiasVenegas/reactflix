@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useMovies from "./hooks/useMovies";
 import LateralBar from "./LateralBar";
 import Movie from "./Movie";
