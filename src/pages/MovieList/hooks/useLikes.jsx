@@ -2,6 +2,9 @@ import { useState } from "react";
 
 /**
  * Manage like and dislike buttons
+ * @param {Object} movie
+ * @param {Function} update
+ * @returns
  */
 const useLikes = (movie, update) => {
   const [like, toggleLike] = useState(false);

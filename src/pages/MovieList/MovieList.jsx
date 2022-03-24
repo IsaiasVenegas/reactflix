@@ -9,7 +9,13 @@ import { Spinner } from "reactstrap";
 import { recoverMovieList } from "./data/actions";
 import "./styles.css";
 
-const MovieList = () => {
+/**
+ * Display a list of movies
+ * Admits pagination and filtering
+ * @param {*} props
+ * @returns
+ */
+const MovieList = (props) => {
   const storedMovies = useSelector((state) => state);
   const [localMovies, removeMovie, manageLike] = useMovies(
     recoverMovieList,

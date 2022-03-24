@@ -8,6 +8,11 @@ import {
   DropdownItem,
 } from "reactstrap";
 
+/**
+ * Display a column with filter and dropdown button components
+ * @param {*} props
+ * @returns
+ */
 const LateralBar = ({ movies, updateList, changeSize }) => {
   const [categories, filters, addFilter] = useFilters(movies, updateList);
   const [dropdown, toggleDropdown] = useState(false);

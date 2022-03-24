@@ -1,6 +1,9 @@
 import { LOADED_MOVIES, LOADING_MOVIES_ERROR } from "./reducers";
 import { movies$ } from "./movies";
-
+/**
+ * Recover a list of movies
+ * @returns {Array}
+ */
 export const recoverMovieList = () => {
   return (dispatch, getState) =>
     movies$

@@ -8,12 +8,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useLikes } from "./hooks";
 
+/**
+ * Calculate likes-dislikes ratio
+ * @param {Number} l likes
+ * @param {Number} d dislikes
+ * @returns
+ */
 const getRatio = (l, d) => {
   let total = l + d;
   let percentage = total > 0 ? (l * 100) / total : (l * 100) / 1;
   return Math.trunc(percentage);
 };
 
+/**
+ * Display a box with movie information
+ * Display a set of buttons
+ * @param {*} props
+ * @returns
+ */
 const Movie = ({ info, remove, update }) => {
   const [like, dislike, manageButton] = useLikes(info, update);
   const likeRatio = useMemo(

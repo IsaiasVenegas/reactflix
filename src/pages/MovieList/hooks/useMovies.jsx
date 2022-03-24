@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 
 /**
  * Load and manage a list of movies
+ * @param {Function} getMovies
  * @param {Array} storedMovies
  * @returns
  */

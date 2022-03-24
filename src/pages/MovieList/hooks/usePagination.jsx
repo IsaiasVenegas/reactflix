@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 /**
  * Manage pagination
+ * @param {Array} list
+ * @returns
  */
 const usePagination = (list) => {
   const [pagination, setPagination] = useState({

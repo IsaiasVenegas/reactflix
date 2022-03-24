@@ -1,6 +1,11 @@
 import React from "react";
 import { MovieList } from "./MovieList";
 
+/**
+ * Display a header and body component
+ * @param {*} props
+ * @returns
+ */
 const Home = (props) => {
   return (
     <div className="container">
