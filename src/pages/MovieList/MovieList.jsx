@@ -1,19 +1,24 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import useMovies from "./hooks/useMovies";
 import LateralBar from "./LateralBar";
 import Movie from "./Movie";
 import Pagination from "./Pagination";
 import { usePagination } from "./hooks";
 import { Spinner } from "reactstrap";
+import { recoverMovieList } from "./data/actions";
 import "./styles.css";
-import { movies } from "./movies";
 
 const MovieList = () => {
-  const [localMovies, removeMovie, manageLike] = useMovies(() => {}, []);
+  const storedMovies = useSelector((state) => state);
+  const [localMovies, removeMovie, manageLike] = useMovies(
+    recoverMovieList,
+    storedMovies.list
+  );
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [pagination, setPage, setPageSize] = usePagination(filteredMovies);
   return (
-    <div className="container" style={{ textAlign: "center" }}>
+    <div className="container">
       {localMovies.loading ? (
         <Spinner />
       ) : localMovies.list.length > 0 ? (

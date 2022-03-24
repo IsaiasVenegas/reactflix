@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 /**
  * Load and manage a list of movies
@@ -6,6 +7,7 @@ import { useState, useEffect } from "react";
  * @returns
  */
 const useMovies = (getMovies, storedMovies) => {
+  const dispatch = useDispatch();
   const [movies, setMovies] = useState({
     loading: false,
     list: [],
@@ -14,7 +16,7 @@ const useMovies = (getMovies, storedMovies) => {
   //ComponentDidMount call
   useEffect(() => {
     setMovies({ loading: true, list: [] });
-    getMovies();
+    dispatch(getMovies());
   }, []);
 
   //If the movie listing has been updated, put it in the local state
